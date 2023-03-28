@@ -10,10 +10,24 @@ export default function Home() {
     <>
       <Layout>
         <section className="pb-10">
-          <hi className="text-3xl font-bold">Hi! I&apos;m Andy Holland</hi>
-          <h2>A Full-stack Developer living in the UK</h2>
+          <div className="flex flex-col text-center items-center">
+            <div className="p-4">
+              <hi className="text-3xl font-bold">Hi! I&apos;m Andy Holland</hi>
+              <h2>A Fullstack Developer living in the UK</h2>
+            </div>
+            <div>
+              <Image
+                src="/../public/and_smart.png"
+                alt="Profile Image"
+                width={300}
+                height={300}
+                className=""
+              />
+            </div>
+          </div>
         </section>
-        <section>
+        <section className="flex flex-col items-center">
+          <h2 className="text-2xl font-bold">Projects</h2>
           <div className={styles.grid}>
             <a
               href="/"
