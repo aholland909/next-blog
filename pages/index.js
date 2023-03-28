@@ -2,7 +2,10 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import Layout from "@/components/layout";
 import styles from "@/styles/Home.module.css";
-
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -15,7 +18,19 @@ export default function Home() {
               <hi className="text-3xl font-bold">Hi! I&apos;m Andy Holland</hi>
               <h2>A Fullstack Developer living in the UK</h2>
             </div>
-            <div>
+            <div className="flex items-center justify-center p-4">
+              <Link href="https://github.com/aholland909">
+                <FontAwesomeIcon className="fa-xl p-2" icon={faGithub} />
+              </Link>
+
+              <Link
+                href="https://www.linkedin.com/in/andrewholland909/"
+                className="fa-xl p-2"
+              >
+                <FontAwesomeIcon icon={faLinkedinIn} />
+              </Link>
+            </div>
+            <div className="p-4">
               <Image
                 src="/../public/and_smart.png"
                 alt="Profile Image"
