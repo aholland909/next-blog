@@ -15,8 +15,8 @@ export default function Home() {
         <section className="pb-10">
           <div className="flex flex-col text-center items-center">
             <div className="p-4">
-              <hi className="text-3xl font-bold">Hi! I&apos;m Andy Holland</hi>
-              <h2>A Fullstack Developer living in the UK</h2>
+              <hi className="text-3xl font-bold">Hi! 👋 I&apos;m Andy Holland</hi>
+              <h2>A Fullstack Developer, passionate about accessibility and cars! 🚗</h2>
             </div>
             <div className="flex items-center justify-center p-4">
               <Link href="https://github.com/aholland909">
@@ -42,7 +42,7 @@ export default function Home() {
           </div>
         </section>
         <section className="flex flex-col items-center">
-          <h2 className="text-2xl font-bold">Projects</h2>
+          <h2 className="text-2xl font-bold" id="projects">Projects</h2>
           <div className={styles.grid}>
             <a
               href="/"
