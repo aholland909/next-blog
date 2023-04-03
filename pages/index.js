@@ -17,9 +17,9 @@ export default function Home(props) {
         <section className="pb-10">
           <div className="flex flex-col text-center items-center">
             <div className="p-4">
-              <hi className="text-3xl font-bold">
+              <h1 className="text-3xl font-bold">
                 Hi! 👋 I&apos;m Andy Holland
-              </hi>
+              </h1>
               <h2>
                 A Fullstack Developer, passionate about accessibility and cars!
                 🚗
@@ -96,6 +96,8 @@ export async function getStaticProps({ preview = false }) {
       }
     `,
   });
+
+  // console.log(data.projectsCollection.items)
 
   return {
     props: {
