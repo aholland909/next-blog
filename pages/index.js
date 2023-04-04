@@ -4,11 +4,12 @@ import Layout from "@/components/layout";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import gql from "graphql-tag";
 import apolloClient from "@/utils/apollo-client";
 import { formatPublishedDateForDisplay } from "@/utils/date";
+import { faLink } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home(props) {
   const { projects } = props;
@@ -43,6 +44,13 @@ export default function Home(props) {
                 className="fa-xl p-2"
               >
                 <FontAwesomeIcon icon={faLinkedinIn} />
+              </Link>
+
+              <Link
+                href="mailto:andrewholland909@gmail.com"
+                className="fa-xl p-2"
+              >
+                <FontAwesomeIcon icon={faEnvelope} />
               </Link>
             </div>
             <div className="p-4">
