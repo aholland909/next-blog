@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Head from "next/head";
 import Layout from "@/components/layout";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
@@ -13,7 +14,14 @@ export default function Home(props) {
   const { projects } = props;
   return (
     <>
-      <Layout>
+      <Head>
+        <title>Andy Holland Blog</title>
+        <meta name="description" content="Andy Holland Blog and Portfolio" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <main className="flex flex-col justify-center align-center items-center p-10 ">
         <section className="pb-10">
           <div className="flex flex-col text-center items-center">
             <div className="p-4">
@@ -55,7 +63,11 @@ export default function Home(props) {
           <div className="md:flex">
             {projects.map((project) => {
               return (
-                <Link className="flex flex-col flex-grow p-4 m-4 rounded text-start bg-gray-100" key={project.slug} href={`projects/${project.slug}`}>
+                <Link
+                  className="flex flex-col flex-grow p-4 m-4 rounded text-start bg-gray-100"
+                  key={project.slug}
+                  href={`projects/${project.slug}`}
+                >
                   <div className="flex flex-1 flex-col">
                     <Image
                       className="object-contain h-48 w-48 rounded"
@@ -66,14 +78,16 @@ export default function Home(props) {
                     />
                     <h3 className="text-xl pt-4">{project.title}</h3>
                     <div className="mt-2 mb-4">{project.excerpt}</div>
-                    <div className="mt-auto flex-none">{formatPublishedDateForDisplay(project.date)}</div>
+                    <div className="mt-auto flex-none">
+                      {formatPublishedDateForDisplay(project.date)}
+                    </div>
                   </div>
                 </Link>
               );
             })}
           </div>
         </section>
-      </Layout>
+      </main>
     </>
   );
 }
@@ -96,8 +110,6 @@ export async function getStaticProps({ preview = false }) {
       }
     `,
   });
-
-  // console.log(data.projectsCollection.items)
 
   return {
     props: {

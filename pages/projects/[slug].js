@@ -1,8 +1,23 @@
+import Head from "next/head";
 import gql from "graphql-tag";
 import apolloClient from "@/utils/apollo-client";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 export default function Projects({ data }) {
-  return <h1>{JSON.stringify(data)}</h1>;
+  return (
+    <>
+      <Head>
+        <title>Andy Holland Blog</title>
+        <meta name="description" content="Andy Holland Blog and Portfolio" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <main className="flex flex-col items-start p-14 ">
+        <h1>{data.title}</h1>
+        {documentToReactComponents(data.content.json)}
+      </main>
+    </>
+  );
 }
 
 export async function getStaticPaths() {
@@ -41,7 +56,7 @@ export async function getStaticProps({ params }) {
             slug
             excerpt
             content {
-              json 
+              json
             }
             thumbnail {
               url

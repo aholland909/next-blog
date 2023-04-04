@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Navbar() {
   const navbarLinks = [
     { name: "Home", url: "/" },
-    { name: "Projects", url: "#projects" },
+    { name: "Projects", url: "/#projects" },
     { name: "Contact", url: "#contact" },
   ];
   return (

@@ -13,11 +13,9 @@ export default function Layout({ children, home }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
       <main className="flex flex-col justify-center align-center items-center p-10 ">
         {children}
       </main>
-      <Footer />
     </div>
   );
 }
