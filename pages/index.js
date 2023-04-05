@@ -1,15 +1,12 @@
 import Image from "next/image";
 import Head from "next/head";
-import Layout from "@/components/layout";
-import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import gql from "graphql-tag";
 import apolloClient from "@/utils/apollo-client";
 import { formatPublishedDateForDisplay } from "@/utils/date";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home(props) {
   const { projects } = props;
@@ -29,7 +26,7 @@ export default function Home(props) {
               <h1 className="text-3xl font-bold">
                 Hi! 👋 I&apos;m Andy Holland
               </h1>
-              <h2>
+              <h2 className="text-xl">
                 A Fullstack Developer, passionate about accessibility and cars!
                 🚗
               </h2>

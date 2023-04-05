@@ -2,6 +2,7 @@ import Head from "next/head";
 import gql from "graphql-tag";
 import apolloClient from "@/utils/apollo-client";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { renderOptions } from "@/utils/contentful-helpers";
 
 export default function Projects({ data }) {
   return (
@@ -12,9 +13,12 @@ export default function Projects({ data }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex flex-col items-start p-14 ">
+      <main className="flex flex-col items-start mt-0 mx-8 md:mx-32 lg:mx-64 xl:mx-80 2xl:mx-96 2xl:px-30 3xl:mx-96 3xl:px-48">
         <h1>{data.title}</h1>
-        {documentToReactComponents(data.content.json)}
+        {documentToReactComponents(
+          data.content.json,
+          renderOptions(data.content.links)
+        )}
       </main>
     </>
   );
@@ -45,18 +49,51 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  console.log(params);
-
   const { data } = await apolloClient.query({
     query: gql`
       query ($slug: String) {
-        projectsCollection(where: { slug: $slug }) {
+        projectsCollection(where: { slug: $slug }, limit: 1) {
           items {
             title
             slug
             excerpt
             content {
               json
+              links {
+                entries {
+                  inline {
+                    sys {
+                      id
+                    }
+                    __typename
+
+                    ... on Projects {
+                      title
+                    }
+                  }
+                  block {
+                    sys {
+                      id
+                    }
+                    __typename
+                    ... on Projects {
+                      title
+                    }
+                  }
+                }
+                assets {
+                  block {
+                    sys {
+                      id
+                    }
+                    url
+                    title
+                    width
+                    height
+                    description
+                  }
+                }
+              }
             }
             thumbnail {
               url
@@ -68,8 +105,6 @@ export async function getStaticProps({ params }) {
     `,
     variables: params,
   });
-
-  console.log(data);
 
   return { props: { data: data.projectsCollection.items[0] } };
 }
