@@ -52,7 +52,7 @@ export default function Home(props) {
             </div>
             <div className="p-4">
               <Image
-                src="/../public/and_smart.png"
+                src="/and_smart.png"
                 alt="Profile Image"
                 width={300}
                 height={300}
