@@ -66,9 +66,9 @@ export async function getStaticProps({ params }) {
                       id
                     }
                     __typename
-
                     ... on Projects {
                       title
+                      slug
                     }
                   }
                   block {
@@ -76,8 +76,10 @@ export async function getStaticProps({ params }) {
                       id
                     }
                     __typename
-                    ... on Projects {
-                      title
+                    ... on CodeBlock {
+                      description
+                      language
+                      code
                     }
                   }
                 }
