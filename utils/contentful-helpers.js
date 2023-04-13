@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
-import SyntaxHighlighter from 'react-syntax-highlighter';
+import SyntaxHighlighter from "react-syntax-highlighter";
+import * as styles from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
 export function renderOptions(links) {
   // create an asset map
@@ -32,7 +33,12 @@ export function renderOptions(links) {
         if (entry.__typename === "CodeBlock") {
           return (
             <div className="w-full">
-              <SyntaxHighlighter language={entry.language}>{entry.code}</SyntaxHighlighter>
+              <SyntaxHighlighter
+                language={entry.language}
+                style={styles[entry.style] || styles["googlecode"]}
+              >
+                {entry.code}
+              </SyntaxHighlighter>
             </div>
           );
         }
