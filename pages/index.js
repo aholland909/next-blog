@@ -12,7 +12,7 @@ import apolloClient from "@/utils/apollo-client";
 import { formatPublishedDateForDisplay } from "@/utils/date";
 
 export default function Home(props) {
-  const { projects, cv } = props;
+  const { projects } = props;
   return (
     <>
       <Head>
@@ -60,7 +60,7 @@ export default function Home(props) {
               />
             </div>
             <Link
-              href={cv.url}
+              href='/cv'
               rel="noopener noreferrer"
               target="_blank"
               className="font-general-medium flex justify-evenly items-center w-40 my-0 sm:my-6 text-lg border border-indigo-200 dark:border-ternary-dark py-2.5 sm:py-3 shadow-lg rounded-lg bg-indigo-50 focus:ring-1 focus:ring-indigo-900 hover:bg-indigo-600 text-gray-500 hover:text-white duration-500"
@@ -88,6 +88,7 @@ export default function Home(props) {
                     height={300}
                     width={300}
                     alt={project.slug}
+                    priority
                   />
                   <div className="px-6 py-4">
                     <div className="font-bold text-xl mb-2">
@@ -132,12 +133,6 @@ export async function getStaticProps({ preview = false }) {
             date
           }
         }
-        assetCollection(where: { title: "Andrew Holland CV" }, limit: 1) {
-          items {
-            title
-            url
-          }
-        }
       }
     `,
   });
@@ -146,7 +141,6 @@ export async function getStaticProps({ preview = false }) {
     props: {
       preview,
       projects: data.projectsCollection.items,
-      cv: data.assetCollection.items[0],
     },
   };
 }
