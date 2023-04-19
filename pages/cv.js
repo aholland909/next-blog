@@ -1,9 +1,18 @@
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
 import apolloClient from "@/utils/apollo-client";
 import gql from "graphql-tag";
 
 //redirect to CV
 export default function CV(props) {
-  return <h1>CV</h1>
+  const { cv } = props;
+
+  const router = useRouter();
+  useEffect(() => {
+    router.push(cv.url);
+  });
+
+  return <h1>CV</h1>;
 }
 
 export async function getStaticProps({ preview = false }) {
@@ -20,8 +29,8 @@ export async function getStaticProps({ preview = false }) {
     `,
   });
   return {
-    redirect: {
-      destination: data.assetCollection.items[0].url,
+    props: {
+      cv: data.assetCollection.items[0],
     },
   };
 }
